@@ -1,5 +1,7 @@
 # ant-design-of-vue
 
+# 一份有完整vue-cli基础配置项的Ant Design of Vue组件使用项目
+
 ## Project setup
 ```
 npm install
