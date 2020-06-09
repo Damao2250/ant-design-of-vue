@@ -13,6 +13,14 @@ const defaultRouter = [
         meta: {
           title: "index"
         }
+      },
+      {
+        path: "/botton",
+        component: () => import('@/views/components/general/botton'),
+        name: "botton",
+        meta: {
+          title: "botton"
+        }
       }
     ]
   }

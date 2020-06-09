@@ -31,16 +31,3 @@ router.afterEach((to,from)=>{
 
 
 
-```js
-function m(s,year,r) {
-  var total = 10*12
-  for (var i = 0; i<year-1; i++) {
-    s=s*(1+r)
-    for(var j = 0; j<12; j++){
-      total += s 
-    }
-  }
-  return total;
-}
-var t=m(10,10,0.05);
-```

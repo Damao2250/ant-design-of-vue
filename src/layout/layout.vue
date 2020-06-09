@@ -11,6 +11,7 @@
           />
         </a-layout-header>
         <a-layout-content
+          class="layout-content"
           :style="{
             margin: '24px 16px',
             padding: '24px',
@@ -18,7 +19,6 @@
             minHeight: '280px'
           }"
         >
-          Content
           <transition name="fade">
             <router-view></router-view>
           </transition>
@@ -68,5 +68,8 @@ export default {
 
 #components-layout-demo-custom-trigger .trigger:hover {
   color: #1890ff;
+}
+.layout-content{
+  overflow-y: scroll;
 }
 </style>

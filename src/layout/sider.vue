@@ -1,7 +1,7 @@
 <template>
   <a-layout-sider v-model="collapsed" :trigger="null" collapsible class="layout-sider">
     <div class="logo">{{ collapsed ? "antd" : title }}</div>
-    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
+    <a-menu theme="dark" mode="inline" :default-selected-keys="['1']"  @click="handleClick">
       <template v-for="menu in menus">
         <a-sub-menu :key="menu.id" v-if="menu.children">
           <span slot="title"><a-icon type="mail" />{{ menu.title }}</span>
@@ -21,19 +21,6 @@
           <span><a-icon type="mail" />{{ menu.title }}</span>
         </a-menu-item>
       </template>
-
-      <a-menu-item key="1">
-        <a-icon type="user" />
-        <span>nav 1</span>
-      </a-menu-item>
-      <a-menu-item key="2">
-        <a-icon type="video-camera" />
-        <span>nav 2</span>
-      </a-menu-item>
-      <a-menu-item key="3">
-        <a-icon type="upload" />
-        <span>nav 3</span>
-      </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
@@ -363,7 +350,17 @@ export default {
   computed: {
     ...mapGetters("app/", ["collapsed"])
   },
-  created() {}
+  created() {},
+  methods:{
+    handleClick(e){
+      console.log(e);
+      
+    },
+    titleClick(e){
+      console.log(e);
+      
+    }
+  }
 };
 </script>
 <style lang="scss" scoped>
