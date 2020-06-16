@@ -1,10 +1,15 @@
 <template>
   <div class="icon-con">
-    <a-radio-group :value="style" size="large" @change="handleSizeChange" class="btn-style">
-      <a-radio-button  value="线框风格">
+    <a-radio-group
+      :value="style"
+      size="large"
+      @change="handleSizeChange"
+      class="btn-style"
+    >
+      <a-radio-button value="线框风格">
         线框风格
       </a-radio-button>
-      <a-radio-button  value="实底风格">
+      <a-radio-button value="实底风格">
         实底风格
       </a-radio-button>
       <a-radio-button value="双色风格">
@@ -14,16 +19,16 @@
     <div v-for="(list, idx) in icons" :key="idx">
       <span class="icon-title">{{ list.type }}</span>
       <a-row>
-        <tamplate v-for="(item, id) in list.icons" :key="id">
-          <a-col :span="3">
-            <div class="icon-item">
+        <template v-for="(item, id) in list.icons" >
+          <a-col :span="3" :key="id">
+            <div class="icon-item" @click="toCopy(item)">
               <div class="icon">
                 <a-icon :type="item" :style="{ fontSize: '32px' }" />
               </div>
-              <div>{{ item }}</div>
+              <div :ref="item">{{ item }}</div>
             </div>
           </a-col>
-        </tamplate>
+        </template>
       </a-row>
     </div>
   </div>
@@ -673,6 +678,16 @@ export default {
         default:
           break;
       }
+    },
+    toCopy(item) {
+      let input = document.createElement('input')
+      input.setAttribute('readonly', 'readonly') // 防止手机上弹出软键盘
+      input.setAttribute('value', item) // txval 为所需复制的值 变量 或者 写死
+      document.body.appendChild(input)
+      input.select()
+      document.execCommand('copy')
+      document.body.removeChild(input)
+      this.$message.info('复制成功：'+ item);
     }
   }
 };
@@ -706,7 +721,7 @@ export default {
     transform: scale(1.2);
   }
 }
-.btn-style{
+.btn-style {
   margin-bottom: 20px;
 }
 </style>
